@@ -67,7 +67,7 @@
                 document.getElementById("taskObject").value = new Date().toLocaleTimeString();
                 ListaZadatakaService.addToList();
                 document.getElementById("taskObject").value = "";
-            }, 10000);
+            }, 30000);
         }
     })
     .component('addToListComponent', {
@@ -116,7 +116,7 @@
             self.completed = 0;
             self.uncompleted = 0;
             angular.forEach(self.items, function (value, key) {
-                if (value.value === true) {  //Proveri ==
+                if (value.value === true) {
                     self.completed++;
                 } else
                     self.uncompleted++;
@@ -127,10 +127,10 @@
         self.addToList = function () {
             self.inputValue = document.getElementById("taskObject").value;
             if (self.inputValue === "") {
-                //alert("Unesite tekst zadatka");
+                alert("Unesite tekst zadatka");
             } else {
-                if (($filter('filter')(self.items, { 'toDo': self.inputValue.trim() })).length !== 0) {  //Proveri !=
-                    //alert("Zadatak vec postoji u listi");
+                if (($filter('filter')(self.items, { 'toDo': self.inputValue.trim() })).length !== 0) {
+                    alert("Zadatak vec postoji u listi");
                 }
                 else {
                     self.items.push({ "toDo": self.inputValue, "value": false });
